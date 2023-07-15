@@ -1,0 +1,17 @@
+<form [formGroup]="myForm">
+  <ng-container *ngFor="let control of formControls">
+    <div [ngSwitch]="control.type">
+      <div *ngSwitchCase="'input'">
+        <label>{{ control.label }}</label>
+        <input [formControlName]="control.name" [type]="control.inputType">
+      </div>
+      <div *ngSwitchCase="'select'">
+        <label>{{ control.label }}</label>
+        <select [formControlName]="control.name">
+          <option *ngFor="let option of control.options" [value]="option.value">{{ option.label }}</option>
+        </select>
+      </div>
+      <!-- Add more cases for other control types as needed -->
+    </div>
+  </ng-container>
+</form>
